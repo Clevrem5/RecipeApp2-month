@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recipe2/categoryPage/presentation/pages/button_appbar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipe2/core/colors/colors.dart';
 
-class CategoryPageNav extends StatelessWidget {
-  const CategoryPageNav({
+import 'button_appbar.dart';
+
+class RecipeBottomNav extends StatelessWidget {
+  const RecipeBottomNav({
     super.key,
   });
 
@@ -17,7 +19,7 @@ class CategoryPageNav extends StatelessWidget {
           width: 280,
           height: 56,
           decoration: BoxDecoration(
-            color: RecipeColors.buttonColor,
+            color: RecipeColors.textSmallColor,
             borderRadius: BorderRadius.circular(100),
           ),
           child: Row(
@@ -37,13 +39,17 @@ class CategoryPageNav extends StatelessWidget {
               ),
               ButtonAppbar(
                 image: "assets/svg/categories.svg",
-                callback: () {},
+                callback: () {
+                  context.go("/");
+                },
                 width: 25,
                 height: 22,
               ),
               ButtonAppbar(
                 image: "assets/svg/profile.svg",
-                callback: () {},
+                callback: () {
+                  context.go("/profile");
+                },
                 width: 25,
                 height: 22,
               ),

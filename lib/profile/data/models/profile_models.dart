@@ -22,7 +22,7 @@ class ProfileAppbarModel {
       fullName: json["fullName"],
       bio: json["presentation"],
       image: json["profilePhoto"],
-      recipeCount: json["recipesCount"],
+      recipeCount: json["recipesCount"] ,
       followingCount: json["followingCount"],
       followerCount: json["followerCount"],
     );

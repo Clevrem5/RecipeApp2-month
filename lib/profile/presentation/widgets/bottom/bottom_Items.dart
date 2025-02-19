@@ -24,7 +24,7 @@ class _BottomNavProfileState extends State<BottomNavProfile> {
             width: 281,
             height: 56,
             child: NavigationBar(
-              indicatorColor: RecipeColors.smallColor,
+              indicatorColor: RecipeColors.textSmallColor,
               selectedIndex: _selectedIndex,
               elevation: 2,
               onDestinationSelected: (index) {
@@ -32,7 +32,7 @@ class _BottomNavProfileState extends State<BottomNavProfile> {
                   _selectedIndex = index;
                 });
               },
-              backgroundColor: RecipeColors.smallColor,
+              backgroundColor: RecipeColors.textSmallColor,
               height: 56,
               labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
               destinations: [

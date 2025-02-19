@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recipe2/categoryPage/presentation/widgets/category_page_nav.dart';
 import 'package:recipe2/core/Sizes.dart';
 import 'package:recipe2/core/colors/colors.dart';
+import 'package:recipe2/profile/presentation/pages/profile_body.dart';
 import 'package:recipe2/profile/presentation/pages/profile_viewmodel.dart';
-import 'package:recipe2/profile/presentation/widgets/bottom_Items.dart';
+import 'package:recipe2/profile/presentation/pages/profile_page_app_bar.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
@@ -22,56 +24,14 @@ class ProfilePage extends StatelessWidget {
         if (vm.myProfile == null) {
           return Center(child: CircularProgressIndicator()); //
         }
-        return Scaffold(
-          backgroundColor: RecipeColors.backRoundColor,
-          extendBody: true,
-          appBar: AppBar(
+        return SafeArea(
+          child: Scaffold(
             backgroundColor: RecipeColors.backRoundColor,
-            surfaceTintColor: Colors.transparent,
-            leadingWidth: 102 * AppSizes.wratio,
-            toolbarHeight: 102 * AppSizes.hRatio,
-            leading: ClipRRect(
-              borderRadius: BorderRadius.circular(51),
-              child: Image.network(vm.myProfile!.image),
-            ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  vm.myProfile!.userName,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
+            extendBody: true,
+            appBar: ProfilePageAppBar(vm: vm),
+            body: ProfileBody(vm: vm),
+            bottomNavigationBar: RecipeBottomNav(),
           ),
-          body: Placeholder(),
-          // body: Stack(
-          //   children: [
-          //     ProfileBody(viewModel: vm), // Asosiy content
-          //     Align(
-          //       alignment: Alignment.bottomCenter,
-          //       child: Container(
-          //         width: double.infinity,
-          //         height: 126,
-          //         decoration: BoxDecoration(
-          //           gradient: LinearGradient(
-          //             colors: [
-          //               Colors.black.withOpacity(0.7), // Gradient effektni kuchaytirish
-          //               Colors.transparent,
-          //             ],
-          //             begin: Alignment.bottomCenter,
-          //             end: Alignment.topCenter,
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          bottomNavigationBar: BottomNavProfile(),
         );
       },
     );

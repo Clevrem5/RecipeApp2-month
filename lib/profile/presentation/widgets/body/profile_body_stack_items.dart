@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:recipe2/profile/presentation/widgets/body/profile_body_stack_image.dart';
+import '../../../../core/colors/colors.dart';
 
-import '../../../core/colors/colors.dart';
-
-class ItemPil extends StatelessWidget {
-  const ItemPil({
+class ProfileBodyStackItems extends StatelessWidget {
+  const ProfileBodyStackItems({
     super.key,
+    required this.title,
+    required this.bio,
+    required this.image,
+    required this.rating,
+    required this.time,
   });
+
+  final String title, bio, image;
+  final int time;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +41,16 @@ class ItemPil extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Crispy Shrimp",
+                title,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              SizedBox(
-                height: 4,
-              ),
+              SizedBox(height: 4),
               Text(
-                "A feast for the senses",
+                bio,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   height: 1,
@@ -57,17 +64,16 @@ class ItemPil extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 5,
                     children: [
                       Text(
-                        "4",
+                        rating.toString(), // ✅ Xatolik tuzatildi
                         style: TextStyle(
                           color: RecipeColors.buttonColor,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
+                      SizedBox(width: 5), // ✅ To‘g‘ri spacing
                       SvgPicture.asset(
                         "assets/svg/star.svg",
                         fit: BoxFit.cover,
@@ -81,8 +87,6 @@ class ItemPil extends StatelessWidget {
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 5,
                     children: [
                       SvgPicture.asset(
                         "assets/svg/clock.svg",
@@ -94,8 +98,9 @@ class ItemPil extends StatelessWidget {
                           BlendMode.srcIn,
                         ),
                       ),
+                      SizedBox(width: 5),
                       Text(
-                        "30 min",
+                        time.toString(),
                         style: TextStyle(
                           color: RecipeColors.buttonColor,
                           fontSize: 12,
@@ -113,56 +118,8 @@ class ItemPil extends StatelessWidget {
           bottom: 73,
           left: -5,
           right: -5.5,
-          child: ImageItem(),
-        ),
-      ],
-    );
-  }
-}
-
-class ImageItem extends StatelessWidget {
-  const ImageItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 170,
-          height: 153,
-          decoration: BoxDecoration(
-            boxShadow: [BoxShadow(blurRadius: 7, spreadRadius: 1)],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: Image.asset(
-              "assets2/images/lunch.png",
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Positioned(
-          top: 7,
-          right: 8,
-          child: Container(
-            width: 28,
-            height: 28,
-            decoration: BoxDecoration(
-              color: RecipeColors.smallColor,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                "assets/svg/heart (2).svg",
-                width: 16,
-                height: 15,
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ),
+          child: ProfileBodyStackImage(
+            image: image,
           ),
         ),
       ],

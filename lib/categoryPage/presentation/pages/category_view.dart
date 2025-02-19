@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recipe2/categoryPage/presentation/pages/category_page_app_bar.dart';
-import 'package:recipe2/categoryPage/presentation/pages/category_page_nav.dart';
+import 'package:recipe2/categoryPage/presentation/widgets/category_page_nav.dart';
 import 'package:recipe2/categoryPage/presentation/pages/category_viewmodel.dart';
 import 'package:recipe2/categoryPage/presentation/widgets/category_page_body.dart';
 import 'package:recipe2/core/Sizes.dart';
+
+import '../widgets/category_page_app_bar.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({
@@ -29,7 +30,7 @@ class CategoryPage extends StatelessWidget {
               extendBody: true,
               appBar: CategoryPageAppBar(),
               body: CategoryPageBody(vm: vm),
-              bottomNavigationBar: CategoryPageNav(),
+              bottomNavigationBar: RecipeBottomNav(),
             ),
           );
         }

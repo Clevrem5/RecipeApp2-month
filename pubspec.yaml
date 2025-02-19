@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.17
   flutter_secure_storage: ^9.2.4
   cached_network_image: ^3.4.1
+  go_router: ^14.8.0
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +71,7 @@ flutter:
     - family: Poppins
       fonts:
         - asset: fonts/Poppins/Poppins-Regular.ttf
-    - family: League Spartan
+    - family: Spartan
       fonts:
         - asset: fonts/Spartan/LeagueSpartan-Regular.ttf
 

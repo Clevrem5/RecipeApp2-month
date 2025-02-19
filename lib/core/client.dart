@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 class ApiClient {
   final Dio dio = Dio(
-    BaseOptions(baseUrl: "http://10.10.2.15:8888/api/v1"),
+    BaseOptions(baseUrl: "http://10.10.3.130:8888/api/v1"),
   );
 
   Future<Map<String, dynamic>> fetchMyProfile() async {
@@ -18,14 +18,26 @@ class ApiClient {
   }
 
 
-  Future<List<dynamic>> fetchCategory() async {
-    var response = await dio.get("/categories/list");
-    if (response.statusCode == 200) {
-      List<dynamic>data = response.data;
-      print("Ma'lumot keldi");
+  Future<List<dynamic>>fetchProfileRecipes()async{
+    var response2=await dio.get("/recipes/list?UserId=1");
+    if (response2.statusCode==200){
+      List<dynamic> data=response2.data;
       return data;
-    } else {
-      throw Exception("Ma'lumot yo'q");
+    }else {
+      throw Exception("Malumot yo'q");
     }
   }
+
+Future<List<dynamic>> fetchCategory() async {
+  var response = await dio.get("/categories/list");
+  if (response.statusCode == 200) {
+    List<dynamic>data = response.data;
+    print("Ma'lumot keldi");
+    return data;
+  } else {
+    throw Exception("Ma'lumot yo'q");
+  }
 }
+
+}
+
